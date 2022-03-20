@@ -82,11 +82,14 @@ public class Robot extends Thread{
                 controller.commandTransformer(command);
             } else {
                 simulation.run(robotCommand);
+                System.out.println("                                                                       [Date] Day 1                                                                         [Time] 6:12:57\n");
+
                 while (controller.state.start == true) {
                     System.out.println("\nEnter command\n");
                     //command =  new StringBuilder(scanner.nextLine());
                     robotCommand = scanner.nextLine();
                     simulation.run(robotCommand);
+                    System.out.println("                                                                       [Date] Day 1                                                                         [Time] 6:12:57\n");
                     //controlManual();
                     //controller.commandTransformer(command);
                 }
