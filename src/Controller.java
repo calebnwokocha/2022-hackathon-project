@@ -203,9 +203,9 @@ public class Controller {
             try {
                 if (command.charAt(i) == 'm' && command.charAt(i + 2) == 'f') {
                     switch (command.charAt(i + 1)) {
-                        case 's':
+                        case 'u':
                             this.partition = "arm";
-                            this.subPartition = "shoulder";
+                            this.subPartition = "upperarm";
                             this.direction = "forward";
                             command = command.deleteCharAt(i);
                             command = command.deleteCharAt(i + 1);
@@ -231,9 +231,9 @@ public class Controller {
                 }
                 if (command.charAt(i) == 'm' && command.charAt(i + 2) == 'b') {
                     switch (command.charAt(i + 1)) {
-                        case 's':
+                        case 'u':
                             this.partition = "arm";
-                            this.subPartition = "shoulder";
+                            this.subPartition = "upperarm";
                             this.direction = "backward";
                             command = command.deleteCharAt(i);
                             command = command.deleteCharAt(i + 1);
@@ -259,9 +259,9 @@ public class Controller {
                 }
                 if (command.charAt(i) == 'm' && command.charAt(i + 2) == 'r') {
                     switch (command.charAt(i + 1)) {
-                        case 's':
+                        case 'u':
                             this.partition = "arm";
-                            this.subPartition = "shoulder";
+                            this.subPartition = "upperarm";
                             this.direction = "rightward";
                             command = command.deleteCharAt(i);
                             command = command.deleteCharAt(i + 1);
@@ -287,9 +287,9 @@ public class Controller {
                 }
                 if (command.charAt(i) == 'm' && command.charAt(i + 2) == 'l') {
                     switch (command.charAt(i + 1)) {
-                        case 's':
+                        case 'u':
                             this.partition = "arm";
-                            this.subPartition = "shoulder";
+                            this.subPartition = "upperarm";
                             this.direction = "leftward";
                             command = command.deleteCharAt(i);
                             command = command.deleteCharAt(i + 1);
@@ -326,16 +326,16 @@ public class Controller {
 
         switch (this.direction) {
             case "forward":
-                this.state.setPositionX(this.partition, this.subPartition, positiveChange);
+                this.state.setDirectionX(this.partition, this.subPartition, positiveChange);
                 break;
             case "backward":
-                this.state.setPositionX(this.partition, this.subPartition, negativeChange);
+                this.state.setDirectionX(this.partition, this.subPartition, negativeChange);
                 break;
             case "rightward":
-                this.state.setPositionY(this.partition, this.subPartition, positiveChange);
+                this.state.setDirectionY(this.partition, this.subPartition, positiveChange);
                 break;
             case "leftward":
-                this.state.setPositionY(this.partition, this.subPartition, negativeChange);
+                this.state.setDirectionY(this.partition, this.subPartition, negativeChange);
                 break;
         }
     }

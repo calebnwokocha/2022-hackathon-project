@@ -1,9 +1,29 @@
 import java.util.*;
 
-public class Robot {
+public class Robot extends Thread{
+    private static Controller controller = new Controller();
+
+    // Arm directions
+    private static int upperarmDirectionX = controller.state.getDirectionX("arm", "upperarm");
+    private static int upperarmDirectionY = controller.state.getDirectionY("arm", "upperarm");
+    private static int forearmDirectionX = controller.state.getDirectionX("arm", "forearm");
+    private static int forearmDirectionY = controller.state.getDirectionY("arm", "forearm");
+    private static int handDirectionX = controller.state.getDirectionX("arm", "hand");
+    private static int handDirectionY = controller.state.getDirectionY("arm", "hand");
+
+    // Wheel directions
+    private static int frontRightWheel = controller.state.getDirectionX("wheel", "frontRightWheel");
+    private static int frontLeftWheel = controller.state.getDirectionX("wheel", "frontLeftWheel");
+    private static int backRightWheel = controller.state.getDirectionX("wheel", "backRightWheel");
+    private static int backLeftWheel = controller.state.getDirectionX("wheel", "frontRightWheel");
+
+    private static Simulation simulation = new Simulation(upperarmDirectionX, upperarmDirectionY, forearmDirectionX,
+            forearmDirectionY, handDirectionX, handDirectionY, frontRightWheel, frontLeftWheel, backRightWheel, backLeftWheel);
+
+
     public static void controlManual() {
         System.out.println("                                                                                                            ROBOT CONTROL MANUAL\n");
-        System.out.println("                                                                                                             shoulder = 's'");
+        System.out.println("                                                                                                             upperarm = 'u'");
         System.out.println("                                                                                                             forearm = 'f'");
         System.out.println("                                                                                                             hand = 'h'");
         System.out.println("                                                                                                             front right wheel = 'frw'");
@@ -18,35 +38,43 @@ public class Robot {
         System.out.println("                                                                                                             Type 's' to start robot\n");
         System.out.println("                                                                                                             To move robot, type a command");
         System.out.println("                                                                                                             in the format 'xyz...' e.g,");
-        System.out.println("                                                                                                             type 'msf' to move shoulder");
-        System.out.println("                                                                                                             forward\n");
+        System.out.println("                                                                                                             type 'mul' to move upperarm");
+        System.out.println("                                                                                                             leftward\n");
         System.out.println("                                                                                                             Type 's' to stop robot\n");
     }
 
-    public static void main (String[] args) {
-        Controller controller = new Controller();
+    public void run() {
+        try {
+            System.out.println("");
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StringBuilder command;
 
         System.out.println("                                                                                                              IMAGINARY ROBOT\n");
         System.out.println("                                                                                     Imaginary robot has one arm and four wheels. The arm is divided");
         System.out.println("                                                                                     into three parts: shoulder, forearm, and hand. All three parts");
-        System.out.println("                                                                                     can move in any direction, and all four wheels can rotate in");
-        System.out.println("                                                                                     forward and backward directions.\n");
+        System.out.println("                                                                                     can move in right and left direction, and all four wheels can");
+        System.out.println("                                                                                     rotate in forward and backward directions.\n");
 
         controlManual();
 
         while (true) {
             if (controller.state.start == false) {
-                System.out.println("Start robot: ");
+                System.out.println("\nStart robot: \n");
                 command =  new StringBuilder(scanner.nextLine());
-                controlManual();
+                //controlManual();
                 controller.commandTransformer(command);
             } else {
                 while (controller.state.start == true) {
-                    System.out.println("Enter command");
+                    simulation.start();
+                    System.out.println("\nEnter command\n");
                     command =  new StringBuilder(scanner.nextLine());
-                    controlManual();
+                    //controlManual();
                     controller.commandTransformer(command);
                 }
             }

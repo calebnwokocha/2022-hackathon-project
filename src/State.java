@@ -3,8 +3,8 @@ public class State {
     boolean stop = true;
 
     // Arm directions
-    private int shoulderDirectionX = 0;
-    private int shoulderDirectionY = 0;
+    private int upperarmDirectionX = 0;
+    private int upperarmDirectionY = 0;
     private int forearmDirectionX = 0;
     private int forearmDirectionY = 0;
     private int handDirectionX = 0;
@@ -16,9 +16,9 @@ public class State {
     private int backRightWheel = 0;
     private int backLeftWheel = 0;
 
-    public int getPositionX(String partition, String subPartition) {
-        if (partition == "arm" && subPartition == "shoulder") {
-            return this.shoulderDirectionX;
+    public int getDirectionX(String partition, String subPartition) {
+        if (partition == "arm" && subPartition == "upperarm") {
+            return this.upperarmDirectionX;
         } else if (partition == "arm" && subPartition == "forearm") {
             return this.forearmDirectionX;
         } else if (partition == "arm" && subPartition == "hand") {
@@ -36,9 +36,9 @@ public class State {
 
     }
 
-    public int getPositionY(String partition, String subPartition) {
-        if (partition == "arm" && subPartition == "shoulder") {
-            return this.shoulderDirectionY;
+    public int getDirectionY(String partition, String subPartition) {
+        if (partition == "arm" && subPartition == "upperarm") {
+            return this.upperarmDirectionY;
         } else if (partition == "arm" && subPartition == "forearm") {
             return this.forearmDirectionY;
         } else if (partition == "arm" && subPartition == "hand") {
@@ -47,9 +47,9 @@ public class State {
         return 0;
     }
 
-    public void setPositionX(String partition, String subPartition, int dx) {
-        if (partition == "arm" && subPartition == "shoulder") {
-            this.shoulderDirectionX += dx;
+    public void setDirectionX(String partition, String subPartition, int dx) {
+        if (partition == "arm" && subPartition == "upperarm") {
+            this.upperarmDirectionX += dx;
         } else if (partition == "arm" && subPartition == "forearm") {
             this.forearmDirectionX += dx;
         } else if (partition == "arm" && subPartition == "hand") {
@@ -65,9 +65,9 @@ public class State {
         }
     }
 
-    public void setPositionY(String partition, String subPartition, int dy) {
-        if (partition == "arm" && subPartition == "shoulder") {
-            this.shoulderDirectionY += dy;
+    public void setDirectionY(String partition, String subPartition, int dy) {
+        if (partition == "arm" && subPartition == "upperarm") {
+            this.upperarmDirectionY += dy;
         } else if (partition == "arm" && subPartition == "forearm") {
             this.forearmDirectionY += dy;
         } else if (partition == "arm" && subPartition == "hand") {
