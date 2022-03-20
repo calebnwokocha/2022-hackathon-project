@@ -1,36 +1,27 @@
 public class Simulation {
-    public Simulation(int upperarmDirectionX, int upperarmDirectionY, int forearmDirectionX,
-                      int forearmDirectionY, int handDirectionX, int handDirectionY, int frontRightWheel,
-                      int frontLeftWheel, int backRightWheel, int backLeftWheel)
-    {
-        this.upperarmDirectionX = upperarmDirectionX;
-        this.upperarmDirectionY = upperarmDirectionY;
-        this.forearmDirectionX = forearmDirectionX;
-        this.forearmDirectionY = forearmDirectionY;
-        this.handDirectionX = handDirectionX;
-        this.handDirectionY = handDirectionY;
-        this.frontRightWheel = frontRightWheel;
-        this.frontLeftWheel = frontLeftWheel;
-        this.backRightWheel = backRightWheel;
-        this.backLeftWheel = backLeftWheel;
-    }
+    private int robotPartition1 = 35;
+    private int subPartition1 = 26;
 
-    // Arm directions
-    private int upperarmDirectionX;
-    private int upperarmDirectionY;
-    private int forearmDirectionX;
-    private int forearmDirectionY;
-    private int handDirectionX;
-    private int handDirectionY;
+    int robotPartition2 = 36;
+    int robotPartition3 = 37;
+    int robotPartition4 = 38;
+    int robotPartition5 = 39;
+    int robotPartition6 = 40;
+    int robotPartition7 = 41;
+    int robotPartition8 = 42 ;
 
-    // Wheel directions
-    private int frontRightWheel;
-    private int frontLeftWheel;
-    private int backRightWheel;
-    private int backLeftWheel;
+    public void run (String robotCommand) {
 
-    public void start () {
-        Map map = new Map();
-        map.drawMap();
+        Map map = new Map(robotPartition1,
+        subPartition1,
+
+        robotPartition2,
+        robotPartition3,
+        robotPartition4,
+        robotPartition5,
+        robotPartition6,
+        robotPartition7,
+        robotPartition8);
+        map.drawMap(robotCommand);
     }
 }
